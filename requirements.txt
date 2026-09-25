@@ -1,0 +1,19 @@
+# PDFer 运行依赖
+#
+# 全部为许可友好（非 copyleft 传染性）协议，可安全用于 MIT 项目。
+# 详见 THIRD_PARTY_LICENSES.md
+#
+# 注意：本项目刻意不使用 PyMuPDF（AGPL-3.0）。
+# 若将来确需其独有能力（彻底涂黑 redaction、增量更新），
+# 请先阅读 THIRD_PARTY_LICENSES.md 中的许可证说明再决定。
+
+pypdf>=5.1            # BSD-3-Clause  结构操作：合并/拆分/页面/加密/元数据
+pikepdf>=9.0          # MPL-2.0       压缩/修复/重写
+pypdfium2>=4.30,<5    # Apache-2.0    pdfium 渲染引擎：转图片/缩略图
+Pillow>=11.0          # MIT-CMU       图像处理
+PySide6>=6.8          # LGPL-3.0      GUI 框架（注意合规要求，见打包说明）
+
+# 开发/测试依赖（不会进入正式 EXE）
+pytest>=8.0           # MIT
+pyinstaller>=6.10     # GPL-2.0 + 例外条款，允许打包分发专有/开源程序
+reportlab>=4.2        # BSD-3-Clause  仅用于测试时动态生成样例 PDF
