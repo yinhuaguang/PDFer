@@ -16,9 +16,9 @@ if not (ROOT / "src" / "pdfer").is_dir():
 SRC = ROOT / "src"
 ICON = ROOT / "assets" / "pdfer.ico"
 
-print(f"[spec] 项目根目录: {ROOT}")
-print(f"[spec] 源码目录  : {SRC}")
-print(f"[spec] 图标      : {ICON} (存在={ICON.exists()})")
+print(f"[spec] project root: {ROOT}")
+print(f"[spec] source dir  : {SRC}")
+print(f"[spec] icon        : {ICON} (exists={ICON.exists()})")
 
 
 def _collect_pdfium() -> list:
@@ -27,7 +27,7 @@ def _collect_pdfium() -> list:
         try:
             collected += collect_dynamic_libs(package)
         except Exception:
-            print(f"[spec] 警告：未能从 {package} 收集动态库", file=sys.stderr)
+            print(f"[spec] warning: failed to collect dynamic libraries from {package}", file=sys.stderr)
     return collected
 
 
@@ -139,7 +139,7 @@ def _strip_dead_weight(entries: list) -> tuple[list, list[str]]:
 
 a.binaries, _dropped = _strip_dead_weight(a.binaries)
 a.datas, _dropped_data = _strip_dead_weight(a.datas)
-print(f"[spec] 剔除用不到的 Qt 组件 {len(_dropped) + len(_dropped_data)} 项")
+print(f"[spec] removed {len(_dropped) + len(_dropped_data)} unused Qt entries")
 
 pyz = PYZ(a.pure)
 
